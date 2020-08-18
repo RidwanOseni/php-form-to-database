@@ -1,5 +1,7 @@
 <?php
 if(isset($_POST['submit'])) {
+    if(!empty($_POST["EName"]) && !empty($_POST["SSN"])) {
+
 $EName = $_POST["EName"];
 $SSN = $_POST["SSN"];
 $Dept = $_POST["Dept"];
@@ -20,13 +22,15 @@ if(!$conn) {
 $query = "INSERT INTO emp_record(ename,ssn,dept,salary,homeAddress) VALUES('$EName','$SSN','$Dept','$Salary','$HomeAddress')";
 $execute = mysqli_query($conn, $query);
 if($execute) {
-    echo "data inserted in database";
+    echo "<span class = 'success'> data inserted in database</span>";
 }else{
-    echo "Error Description: " . mysqli_error($conn);
+    echo "<span class = 'error'> Error Description: </span>" . mysqli_error($conn);
 }
 
-mysqli_close($connection);
-
+mysqli_close($conn);
+}else{
+    echo "<span class='fieldInfoHeading'>Fill in your name and SSN </span>";
+}
 }
 
 ?>
@@ -37,40 +41,7 @@ mysqli_close($connection);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert Into Database</title>
 </head>
-<style type="text/css">
-input[type = "text"], textarea {
-    border: 1px, solid;
-    background-color: rgb(221, 216, 212);
-    width: 480px;
-    padding: .5em;
-    font-size: 1.0em;
-}
 
-input[type="submit"] {
-    color: white;
-    font-size: 1.0 em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 200px;
-    height: 40px;
-    background-color: purple;
-    border: 5px, solid;
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    border-top-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    border-color: rgb(221, 216, 212);
-    font-weight: bold;
-
-
-}
-
-.fieldInfo {
-    color: rgb(251, 174, 44);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1 em;
-}
-
-</style>
 <body>
 
 <div>
