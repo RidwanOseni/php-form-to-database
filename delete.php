@@ -27,6 +27,8 @@ input[type = "text"], textarea {
 </style>
 
 <body>
+
+    <h2 class="success"><?php echo @$_GET['Deleted']; ?></h2>
     <table width="1000" border="5" align="center">
         <caption>View From Database</caption>
         <tr>
@@ -61,7 +63,7 @@ input[type = "text"], textarea {
     <td><?php echo $dept; ?></td>
     <td><?php echo $salary; ?></td>
     <td><?php echo $homeAddress; ?></td>
-    <td>Delete</td>
+    <td> <a href="deletedata.php?Delete=<?php echo $id ?> ">Delete</a></td>
     <td>Update</td>
 </tr>
 
